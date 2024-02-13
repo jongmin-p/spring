@@ -30,4 +30,10 @@ public class OrderServiceImpl implements OrderService {
         // 3. 이제 order(주문) 만들어서 반환해주면 됨.
         return new Order(memberId, itemName, itemPrice, discountPrice);
     }
+
+
+    // 테스트 용도
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
+    }
 }
