@@ -3,10 +3,12 @@ package hello.core.order;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
     // 오더 서비스는 아래의 2가지가 필요. (MemberRepository, DiscountPolicy)
@@ -15,13 +17,14 @@ public class OrderServiceImpl implements OrderService {
     private final MemberRepository memberRepository;
 
     // 2. 할인을 어떻게 할 건지 결정할 때 필요
-    private DiscountPolicy discountPolicy;
+    private final DiscountPolicy discountPolicy;
 
-    @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
-    }
+    // @RequiredArgsConstructor 애너테이션(롬복) 이 아래 생성자 의존 관계 코드를 자동으로 만들어 줌. (대신 final 붙은 필드들만)
+//    @Autowired
+//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+//        this.memberRepository = memberRepository;
+//        this.discountPolicy = discountPolicy;
+//    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
