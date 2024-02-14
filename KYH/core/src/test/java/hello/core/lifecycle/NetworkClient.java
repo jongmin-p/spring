@@ -1,13 +1,15 @@
 package hello.core.lifecycle;
 
-public class NetworkClient {
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
+
+public class NetworkClient implements InitializingBean, DisposableBean {
+                                        // 초기화,         소멸  인터페이스
 
     private String url;     // 접속해야 할 url
 
     public NetworkClient() {
         System.out.println("생성자 호출, url = " + url);
-        connect();
-        call("초기화 연결 메세지");
     }
 
     // url 은 외부에서 넣을 수 있도록 setter 이용
@@ -28,5 +30,20 @@ public class NetworkClient {
     // 서비스 종료 시 호출할 메서드
     public void disconnect() {
         System.out.println("close: " + url);
+    }
+
+    // 의존 관계 주입이 끝나면 호출되는 메서드
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("NetworkClient.afterPropertiesSet");
+        connect();
+        call("초기화 연결 메세지");
+    }
+
+    // 빈이 종료될 때 호출되는 메서드
+    @Override
+    public void destroy() throws Exception {
+        System.out.println("NetworkClient.destroy");
+        disconnect();
     }
 }
