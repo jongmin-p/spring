@@ -30,7 +30,7 @@ public class FrontControllerServletV4 extends HttpServlet {
     // -> 그냥, HttpServlet 를 상속 받아야 하는 서블릿에서는 기본 생성자가 반드시 있어야 하고,
     // 이 기본 생성자는 자동으로 1번 실행되는 듯 (이게 서블릿 규칙)
     public FrontControllerServletV4() {
-        System.out.println("생성자 호출 - FrontControllerServletV433");           // 서버 실행 시, 1번 호출됨. (이 생성자가 실행됐다는 의미. 이유 모름)
+        System.out.println("생성자 호출 - FrontControllerServletV444");           // 서버 실행 시, 1번 호출됨. (이 생성자가 실행됐다는 의미. 이유 모름)
         // -> 그냥, HttpServlet 를 상속 받아야 하는 서블릿에서는 반드시 기본 생성자가 있어야 하고, 이 기본 생성자는 자동으로 1번 실행되는 듯 (이게 서블릿 규칙)
 
                                 // ┌> 얘가 호출이 되면,                        ┌> 얘가 실행됨
