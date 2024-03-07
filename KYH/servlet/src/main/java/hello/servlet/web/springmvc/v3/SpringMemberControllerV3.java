@@ -33,6 +33,12 @@ public class SpringMemberControllerV3 {
         Member member = new Member(username, age);
         memberRepository.save(member);
 
+        /*
+            Model 은 컨트롤러와 뷰 사이에서 데이터를 전달하는 데 사용되는 객체.
+            컨트롤러가 처리한 데이터나 비즈니스 로직의 결과를 뷰에 전달하고자 할 때 model 객체에 데이터를 담아서 보냄.
+            뷰 템플릿에서는 이 model 에 담긴 데이터를 사용하여 HTML을 생성함.(즉, 렌더링 함)
+        */
+        
         model.addAttribute("member", member);
 
         return "save-result";
